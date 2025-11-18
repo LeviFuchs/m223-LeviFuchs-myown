@@ -1,0 +1,10 @@
+{
+  "name": "Quarkus Dev",
+  "image": "maven:3.9-eclipse-temurin-21",
+
+  "forwardPorts": [8080],
+
+  "postCreateCommand": "mvn -q -DskipTests clean install",
+
+  "remoteUser": "root"
+}
