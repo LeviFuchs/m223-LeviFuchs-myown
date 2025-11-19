@@ -1,62 +1,32 @@
-# extended_hello_world
+# API Endpunkte - Hotel Buchungssystem
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Users
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+| Endpunkt-URL | HTTP-Methode | Beschreibung | Benötigte Daten |
+|--------------|--------------|--------------|-----------------|
+| /users | GET | Ruft alle User ab | Keine |
+| /users/{id} | GET | Ruft einen User nach ID ab | User-ID |
+| /users | POST | Erstellt einen neuen User | firstName, lastName |
+| /users/{id} | PUT | Bearbeitet einen User | User-ID, firstName, lastName |
+| /users/{id} | DELETE | Löscht einen User | User-ID |
 
-## Running the application in dev mode
+## Rooms
 
-You can run your application in dev mode that enables live coding using:
+| Endpunkt-URL | HTTP-Methode | Beschreibung | Benötigte Daten |
+|--------------|--------------|--------------|-----------------|
+| /rooms | GET | Ruft alle Zimmer ab | Keine |
+| /rooms/{id} | GET | Ruft ein Zimmer nach ID ab | Room-ID |
+| /rooms/{id} | PUT | Bearbeitet ein Zimmer | Room-ID, roomNumber, floor, pricePerNight |
+| /rooms/{id} | DELETE | Löscht ein Zimmer | Room-ID |
 
-```shell script
-./mvnw quarkus:dev
-```
+## Bookings
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
-```
-
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/extended_hello_world-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+| Endpunkt-URL | HTTP-Methode | Beschreibung | Benötigte Daten |
+|--------------|--------------|--------------|-----------------|
+| /bookings | GET | Ruft alle Buchungen ab | Keine |
+| /bookings/{id} | GET | Ruft eine Buchung nach ID ab | Booking-ID |
+| /bookings/user/{userId} | GET | Ruft alle Buchungen eines Users ab | User-ID |
+| /bookings/room/{roomId} | GET | Ruft alle Buchungen eines Zimmers ab | Room-ID |
+| /bookings | POST | Erstellt eine neue Buchung | user {id}, room {id}, checkInDate, checkOutDate |
+| /bookings/{id} | PUT | Bearbeitet eine Buchung | Booking-ID, user {id}, room {id}, checkInDate, checkOutDate |
+| /bookings/{id} | DELETE | Löscht eine Buchung | Booking-ID |
