@@ -4,6 +4,7 @@ import java.util.List;
 
 import ch.zli.m223.model.User;
 import ch.zli.m223.service.UserService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -23,6 +24,7 @@ public class GreetingResource {
     UserService userService;
 
     @GET
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
         return userService.getAllUsers();

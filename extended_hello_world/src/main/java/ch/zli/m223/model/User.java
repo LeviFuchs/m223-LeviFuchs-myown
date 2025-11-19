@@ -18,7 +18,7 @@ public class User {
 
     private String lastName;
 
-    // ✅ Getter und Setter für ID hinzufügen
+    // getter und setter für ID hinzufügen
     public Long getId() {
         return id;
     }

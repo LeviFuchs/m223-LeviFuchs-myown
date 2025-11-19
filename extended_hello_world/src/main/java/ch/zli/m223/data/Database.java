@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import ch.zli.m223.model.Booking;
+import ch.zli.m223.model.Employee;
 import ch.zli.m223.model.Room;
 import ch.zli.m223.model.User;
 import io.quarkus.runtime.Startup;
@@ -21,9 +22,34 @@ public class Database {
     @Startup
     @Transactional
     public void seedDatabase() {
+        createEmployees();
         createUsers();
         createRooms();
         createBookings();
+    }
+
+    public void createEmployees() {
+        // Admin Employee
+        var employee1 = new Employee();
+        employee1.setEmail("levi.fuchs@gmail.com");
+        employee1.setPassword("admin123");
+        entityManager.persist(employee1);
+
+        // Regular User Employees
+        var employee2 = new Employee();
+        employee2.setEmail("noah.burren@example.com");
+        employee2.setPassword("password123");
+        entityManager.persist(employee2);
+
+        var employee3 = new Employee();
+        employee3.setEmail("sarah.mueller@example.com");
+        employee3.setPassword("password456");
+        entityManager.persist(employee3);
+
+        var employee4 = new Employee();
+        employee4.setEmail("tim.schmidt@example.com");
+        employee4.setPassword("password789");
+        entityManager.persist(employee4);
     }
 
     public void createUsers() {
@@ -31,7 +57,7 @@ public class Database {
         user1.setFirstName("Levi");
         user1.setLastName("Fuchs");
         entityManager.persist(user1);
-        
+
         var user2 = new User();
         user2.setFirstName("Noah");
         user2.setLastName("Burren");
@@ -95,4 +121,5 @@ public class Database {
         booking3.setCheckOutDate(LocalDate.of(2022, 12, 5));
         entityManager.persist(booking3);
     }
+
 }

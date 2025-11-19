@@ -4,6 +4,7 @@ import java.util.List;
 
 import ch.zli.m223.model.Booking;
 import ch.zli.m223.service.BookingService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -54,6 +55,7 @@ public class BookingResource {
     }
 
     @POST
+    @RolesAllowed("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createBooking(Booking booking) {

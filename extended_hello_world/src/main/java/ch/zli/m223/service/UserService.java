@@ -18,7 +18,7 @@ public class UserService {
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
-        public User getUserById(Long id) {
+    public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 
@@ -40,7 +40,6 @@ public class UserService {
         }
         return null;
     }
-
 
     // delete user
     @Transactional
