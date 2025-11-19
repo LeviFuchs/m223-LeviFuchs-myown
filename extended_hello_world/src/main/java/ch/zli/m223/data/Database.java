@@ -1,6 +1,5 @@
 package ch.zli.m223.data;
 
-
 import ch.zli.m223.model.User;
 import io.quarkus.runtime.Startup;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -25,7 +24,10 @@ public class Database {
         user1.setFirstName("Levi");
         user1.setLastName("Fuchs");
         entityManager.persist(user1);
-
+         var user2 = new User();
+        user2.setFirstName("Noah");
+        user2.setLastName("Burren");
+        entityManager.persist(user2);
     }
 
 }
