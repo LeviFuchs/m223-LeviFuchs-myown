@@ -1,7 +1,5 @@
 package ch.zli.m223.data;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import ch.zli.m223.model.User;
 import io.quarkus.runtime.Startup;

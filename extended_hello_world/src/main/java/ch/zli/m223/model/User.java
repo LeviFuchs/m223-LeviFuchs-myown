@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users") // Use "users" instead of "User"
+@Table(name = "users")
 public class User {
 
     @Id
@@ -18,6 +18,15 @@ public class User {
 
     private String lastName;
 
+    // ✅ Getter und Setter für ID hinzufügen
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -26,7 +35,8 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getlastName() {
+    // ⚠️ Hier war ein Tippfehler: "getlastName" → "getLastName"
+    public String getLastName() {
         return lastName;
     }
 
