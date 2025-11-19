@@ -1,7 +1,9 @@
 package ch.zli.m223.data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
+import ch.zli.m223.model.Booking;
 import ch.zli.m223.model.Room;
 import ch.zli.m223.model.User;
 import io.quarkus.runtime.Startup;
@@ -21,6 +23,7 @@ public class Database {
     public void seedDatabase() {
         createUsers();
         createRooms();
+        createBookings();
     }
 
     public void createUsers() {
@@ -28,6 +31,7 @@ public class Database {
         user1.setFirstName("Levi");
         user1.setLastName("Fuchs");
         entityManager.persist(user1);
+        
         var user2 = new User();
         user2.setFirstName("Noah");
         user2.setLastName("Burren");
@@ -66,4 +70,29 @@ public class Database {
         entityManager.persist(room5);
     }
 
+    public void createBookings() {
+        // User 1 (Levi) war vom 14.09.2022 bis 18.09.2022 in Zimmer 101
+        var booking1 = new Booking();
+        booking1.setUser(entityManager.find(User.class, 1L));
+        booking1.setRoom(entityManager.find(Room.class, 1L));
+        booking1.setCheckInDate(LocalDate.of(2022, 9, 14));
+        booking1.setCheckOutDate(LocalDate.of(2022, 9, 18));
+        entityManager.persist(booking1);
+
+        // User 2 (Noah) war vom 20.10.2022 bis 25.10.2022 in Zimmer 201
+        var booking2 = new Booking();
+        booking2.setUser(entityManager.find(User.class, 2L));
+        booking2.setRoom(entityManager.find(Room.class, 3L));
+        booking2.setCheckInDate(LocalDate.of(2022, 10, 20));
+        booking2.setCheckOutDate(LocalDate.of(2022, 10, 25));
+        entityManager.persist(booking2);
+
+        // User 1 (Levi) war vom 01.12.2022 bis 05.12.2022 in Zimmer 301
+        var booking3 = new Booking();
+        booking3.setUser(entityManager.find(User.class, 1L));
+        booking3.setRoom(entityManager.find(Room.class, 5L));
+        booking3.setCheckInDate(LocalDate.of(2022, 12, 1));
+        booking3.setCheckOutDate(LocalDate.of(2022, 12, 5));
+        entityManager.persist(booking3);
+    }
 }
