@@ -18,6 +18,16 @@ public class UserService {
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
+        public User getUserById(Long id) {
+        return entityManager.find(User.class, id);
+    }
+
+    // create user
+    @Transactional
+    public User createUser(User user) {
+        entityManager.persist(user);
+        return user;
+    }
 
     // user update
     @Transactional
