@@ -1,7 +1,6 @@
 package ch.zli.m223;
 
 import ch.zli.m223.service.AuthService;
-import ch.zli.m223.service.EmployeeService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -17,9 +16,6 @@ public class SecureResource {
 
     @Inject
     AuthService authService;
-
-    @Inject
-    EmployeeService employeeService;
 
     @POST
     @Path("/login")
