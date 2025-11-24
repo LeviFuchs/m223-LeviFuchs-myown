@@ -29,26 +29,30 @@ public class Database {
     }
 
     public void createEmployees() {
-        // Admin Employee
+        // Admin Employee - Passwort hashen!
         var employee1 = new Employee();
         employee1.setEmail("levi.fuchs@gmail.com");
-        employee1.setPassword("admin123");
+        employee1.setPassword(org.mindrot.jbcrypt.BCrypt.hashpw("admin123", org.mindrot.jbcrypt.BCrypt.gensalt()));
+        employee1.setRole("Admin");
         entityManager.persist(employee1);
 
-        // Regular User Employees
+        // Regular User Employees - Passwörter hashen!
         var employee2 = new Employee();
         employee2.setEmail("noah.burren@example.com");
-        employee2.setPassword("password123");
+        employee2.setPassword(org.mindrot.jbcrypt.BCrypt.hashpw("password123", org.mindrot.jbcrypt.BCrypt.gensalt()));
+        employee1.setRole("User");
         entityManager.persist(employee2);
 
         var employee3 = new Employee();
         employee3.setEmail("sarah.mueller@example.com");
-        employee3.setPassword("password456");
+        employee3.setPassword(org.mindrot.jbcrypt.BCrypt.hashpw("password456", org.mindrot.jbcrypt.BCrypt.gensalt()));
+        employee1.setRole("User");
         entityManager.persist(employee3);
 
         var employee4 = new Employee();
         employee4.setEmail("tim.schmidt@example.com");
-        employee4.setPassword("password789");
+        employee4.setPassword(org.mindrot.jbcrypt.BCrypt.hashpw("password789", org.mindrot.jbcrypt.BCrypt.gensalt()));
+        employee1.setRole("User");
         entityManager.persist(employee4);
     }
 

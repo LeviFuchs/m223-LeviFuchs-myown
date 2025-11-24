@@ -2,30 +2,27 @@ package ch.zli.m223.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "employee")
 public class Employee extends PanacheEntity {
 
-    private String email;
+    public String email;
+    public String password;
+    public String role;
 
-    private String password;
-
-    private String role;
-
-    @PrePersist
-    @PreUpdate
-    public void setRoleBasedOnEmail() {
-        if ("levi.fuchs@gmail.com".equals(this.email)) {
-            this.role = "admin";
-        } else {
-            this.role = "user";
-        }
+    // Leerer Constructor
+    public Employee() {
     }
 
+    // Constructor mit Parametern
+    public Employee(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    // Getter und Setter
     public String getEmail() {
         return email;
     }
